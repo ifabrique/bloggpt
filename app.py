@@ -60,7 +60,7 @@ def generate_content(topic: str) -> dict:
                 "content": f"Придумайте привлекательный и точный заголовок для статьи на тему '{topic}', с учётом актуальных новостей:\n{recent_news}. Заголовок должен быть интересным и ясно передавать суть темы. Не используй символы # и - в тексте, даже в заголовках."
             }],
             max_tokens=20,
-            temperature=0.8,
+            temperature=1.0,
             stop=["\n"]
         )
         title = title_response.choices[0].message.content.strip()
@@ -73,7 +73,7 @@ def generate_content(topic: str) -> dict:
                 "content": f"Напишите мета-описание для статьи с заголовком: '{title}'. Оно должно быть полным, информативным и содержать основные ключевые слова. Не используй символы # и - в тексте, даже в заголовках."
             }],
             max_tokens=30,
-            temperature=0.8,
+            temperature=1.0,
             stop=["."]
         )
         meta_description = meta_response.choices[0].message.content.strip()
@@ -96,7 +96,7 @@ def generate_content(topic: str) -> dict:
                 9. Не используй символ # в тексте, даже в заголовках."""
             }],
             max_tokens=1000,
-            temperature=0.8,
+            temperature=1.0,
             presence_penalty=0.6,
             frequency_penalty=0.6
         )
